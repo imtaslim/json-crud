@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="container mx-auto px-4 sm:px-8 min-h-screen">
+        <div class="w-full py-8">
+          <h2 class="text-center pb-10 text-2xl font-semibold leading-tight">
+            {{if eq .Student.ID 0}}
+            Create Student
+            {{else}}
+            Update Student
+            {{end}}
+          </h2>
+          <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
+            <form action="{{.FormAction}}" method="POST">     
+              <div class="mb-5">
+                <label for="Name" class="block mb-2 font-bold text-gray-600">Name <span class="text-red-400">*</span></label>
+                <input type="text" id="Name" name="Name" value="{{.Student.Name}}" placeholder="Put in your full name." class="border {{with .FormError.name}} border-red-400 {{end}} shadow p-3 w-full rounded mb-">
+                {{with .FormError.name}}
+                <p class="text-sm text-red-400 mt-2">{{.}}</p>
+                {{end}}
+              </div>     
+              <div class="mb-5">
+                <label for="Roll" class="block mb-2 font-bold text-gray-600">Roll No <span class="text-red-400">*</span></label>
+                <input type="Roll" id="Roll" name="Roll" value="{{.Student.Roll}}" placeholder="Put in your Roll." class="border {{with .FormError.roll}} border-red-400 {{end}} shadow p-3 w-full rounded mb-">
+                {{with .FormError.roll}}
+                <p class="text-sm text-red-400 mt-2">{{.}}</p>
+                {{end}}
+              </div>     
+              <div class="mb-5">
+                <label for="Class" class="block mb-2 font-bold text-gray-600">Class <span class="text-red-400">*</span></label>
+                <input type="text" id="Class" name="Class" value="{{.Student.Class}}" placeholder="Put in your Class." class="border {{with .FormError.class}} border-red-400 {{end}} shadow p-3 w-full rounded mb-">
+                {{with .FormError.class}}
+                <p class="text-sm text-red-400 mt-2">{{.}}</p>
+                {{end}}
+              </div>
+              <div class="flex justify-between">
+                  <a href="/students" class="block text-center w-1/4 bg-green-500 text-white font-bold p-3 rounded-lg">Back to List</a>
+                  <button class="block w-1/4 bg-blue-500 text-white font-bold p-3 rounded-lg">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+</body>
+</html>
