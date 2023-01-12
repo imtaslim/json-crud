@@ -1,7 +1,6 @@
 package main
 
 import (
-	"json-crud/handler"
 	"log"
 	"net/http"
 	"os"
@@ -10,6 +9,8 @@ import (
 	"github.com/gorilla/schema"
 	"github.com/spf13/afero"
 	"github.com/yookoala/realpath"
+	
+	"github.com/imtaslim/json-crud/handler"
 )
 
 func main (){
